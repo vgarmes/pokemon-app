@@ -1,2 +1,4 @@
 import Layout from './Layout';
-export { Layout };
+import Error from './Error';
+import PokemonCard from './PokemonCard';
+export { Layout, Error, PokemonCard };
