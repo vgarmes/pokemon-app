@@ -31,7 +31,7 @@ const PokemonCard = ({ name, url }) => {
           <Image
             src={data.sprites.other['official-artwork']['front_default']}
             alt={`${name} sprite`}
-            height="250px"
+            height="300px"
             width="100%"
             objectFit="cover"
             objectPosition="center"
