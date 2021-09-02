@@ -1,25 +1,29 @@
 import React from 'react';
 import { useFetchPokeData } from '../hooks/useFetchPokemons';
 import { SimpleGrid } from '@chakra-ui/react';
-import { Error, PokemonCard } from '../components';
-
-const PAGE_SIZE = 20;
+import { Error, PokemonCard, PageButtons } from '../components';
+import { useGlobalContext } from '../context/global_context';
 
 const Home = () => {
-  //const [pageIndex, setPageIndex] = useState(0);
-  const pageIndex = 0;
-  const { data, error } = useFetchPokeData('/pokemon', {
-    limit: PAGE_SIZE,
-    offset: PAGE_SIZE * pageIndex,
+  const { page_size, page_index } = useGlobalContext();
+
+  const { data, error, isValidating } = useFetchPokeData('/pokemon', {
+    limit: page_size,
+    offset: page_size * page_index,
   });
+  if (error) {
+    return <Error />;
+  }
   return (
-    <SimpleGrid my={[2, null, 6]} minChildWidth="300px" spacing="4">
-      {error && <Error />}
-      {data &&
-        data.results.map((pokemon, index) => (
-          <PokemonCard key={index} {...pokemon} />
-        ))}
-    </SimpleGrid>
+    <>
+      <PageButtons isLoading={isValidating} isLastPage={data && !data.next} />
+      <SimpleGrid my={[2, null, 6]} minChildWidth="300px" spacing="4">
+        {data &&
+          data.results.map((pokemon, index) => (
+            <PokemonCard key={index} {...pokemon} />
+          ))}
+      </SimpleGrid>
+    </>
   );
 };
 
