@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FormControl, FormLabel, Select } from '@chakra-ui/react';
 import { useGlobalContext } from '../context/global_context';
 
