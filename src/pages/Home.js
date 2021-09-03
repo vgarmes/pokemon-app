@@ -1,5 +1,5 @@
 import React from 'react';
-import { SearchBar, PokemonList } from '../components';
+import { SearchBar, PokemonList, SearchResults } from '../components';
 import { useGlobalContext } from '../context/global_context';
 
 const Home = () => {

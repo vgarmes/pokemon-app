@@ -7,6 +7,7 @@ import Sort from './Sort';
 import PageSizeSelector from './PageSizeSelector';
 import SearchBar from './SearchBar';
 import PokemonList from './PokemonList';
+import SearchResults from './SearchResults';
 export {
   Layout,
   Error,
@@ -17,4 +18,5 @@ export {
   PageSizeSelector,
   SearchBar,
   PokemonList,
+  SearchResults,
 };
