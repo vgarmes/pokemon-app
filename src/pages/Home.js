@@ -1,9 +1,13 @@
 import React from 'react';
 import { useFetch } from '../hooks/useFetchPokemons';
-import { SimpleGrid } from '@chakra-ui/react';
-import { Error, PokemonCard, PageSizeSelector } from '../components';
+import { SimpleGrid, Box } from '@chakra-ui/react';
+import {
+  Error,
+  PokemonCard,
+  PageSizeSelector,
+  PageButtons,
+} from '../components';
 import { useGlobalContext } from '../context/global_context';
-import { POKE_LIMIT } from '../utils/constants';
 
 const Home = () => {
   const { page_size, page_index } = useGlobalContext();
@@ -18,23 +22,22 @@ const Home = () => {
 
   return (
     <>
-      <PageSizeSelector />
+      <Box d="flex" alignItems="center" justifyContent="space-between">
+        <PageSizeSelector />
+        <PageButtons />
+      </Box>
+
       <SimpleGrid my={[2, null, 6]} minChildWidth="300px" spacing="4">
         {data &&
           data.results.map((pokemon) => (
             <PokemonCard key={pokemon.id} {...pokemon} />
           ))}
       </SimpleGrid>
+      <Box d="flex" justifyContent="flex-end">
+        <PageButtons />
+      </Box>
     </>
   );
 };
-/*
- <SimpleGrid my={[2, null, 6]} minChildWidth="300px" spacing="4">
-{data &&
-          data.results.map((pokemon, index) => (
-            <PokemonCard key={index} {...pokemon} />
-          ))}
-          </SimpleGrid>
-          */
 
 export default Home;
