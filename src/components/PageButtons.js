@@ -2,7 +2,7 @@ import React from 'react';
 import { ButtonGroup, Button } from '@chakra-ui/react';
 import { useGlobalContext } from '../context/global_context';
 const PageButtons = ({ isLoading, isLastPage = false }) => {
-  const { page_index, nextPage, prevPage } = useGlobalContext();
+  const { page_index, increasePage, decreasePage } = useGlobalContext();
   return (
     <ButtonGroup spacing={2} colorScheme="blue">
       {page_index !== 0 && (
@@ -10,7 +10,7 @@ const PageButtons = ({ isLoading, isLastPage = false }) => {
           isDisabled={isLoading}
           variant="outline"
           width="80px"
-          onClick={prevPage}
+          onClick={decreasePage}
         >
           Previous
         </Button>
@@ -21,7 +21,7 @@ const PageButtons = ({ isLoading, isLastPage = false }) => {
           isDisabled={isLoading}
           variant="solid"
           width="80px"
-          onClick={nextPage}
+          onClick={increasePage}
         >
           Next
         </Button>

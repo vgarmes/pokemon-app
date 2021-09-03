@@ -59,11 +59,11 @@ export const ContextProvider = ({ children }) => {
     }
   };
 
-  const nextPage = () => {
+  const increasePage = () => {
     dispatch({ type: NEXT_PAGE });
   };
 
-  const prevPage = () => {
+  const decreasePage = () => {
     dispatch({ type: PREV_PAGE });
   };
 
@@ -77,7 +77,13 @@ export const ContextProvider = ({ children }) => {
 
   return (
     <GlobalContext.Provider
-      value={{ ...state, nextPage, prevPage, updateSort, updatePageSize }}
+      value={{
+        ...state,
+        increasePage,
+        decreasePage,
+        updateSort,
+        updatePageSize,
+      }}
     >
       {children}
     </GlobalContext.Provider>
