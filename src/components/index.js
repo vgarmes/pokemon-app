@@ -5,6 +5,7 @@ import PokemonCard from './PokemonCard';
 import PageButtons from './PageButtons';
 import Sort from './Sort';
 import PageSizeSelector from './PageSizeSelector';
+import SearchBar from './SearchBar';
 export {
   Layout,
   Error,
@@ -13,4 +14,5 @@ export {
   Loading,
   Sort,
   PageSizeSelector,
+  SearchBar,
 };
