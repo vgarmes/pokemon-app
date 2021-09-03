@@ -9,6 +9,7 @@ import {
   GET_SINGLE_POKEMON_ERROR,
   UPDATE_SORT,
   SORT_POKEMONS,
+  UPDATE_PAGE_SIZE,
 } from '../actions';
 
 const global_reducer = (state, action) => {
@@ -82,6 +83,10 @@ const global_reducer = (state, action) => {
     }
 
     return { ...state, pokemons: tempPokemons };
+  }
+
+  if (action.type === UPDATE_PAGE_SIZE) {
+    return { ...state, page_size: action.payload };
   }
   throw new Error(`No matching "${action.type} - action type`);
 };

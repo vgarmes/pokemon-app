@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFetch } from '../hooks/useFetchPokemons';
 import { SimpleGrid } from '@chakra-ui/react';
-import { Error, Loading, PokemonCard, Sort } from '../components';
+import { Error, PokemonCard, PageSizeSelector } from '../components';
 import { useGlobalContext } from '../context/global_context';
 import { POKE_LIMIT } from '../utils/constants';
 
@@ -18,6 +18,7 @@ const Home = () => {
 
   return (
     <>
+      <PageSizeSelector />
       <SimpleGrid my={[2, null, 6]} minChildWidth="300px" spacing="4">
         {data &&
           data.results.map((pokemon) => (

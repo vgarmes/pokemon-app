@@ -12,6 +12,7 @@ import {
   GET_SINGLE_POKEMON_ERROR,
   UPDATE_SORT,
   SORT_POKEMONS,
+  UPDATE_PAGE_SIZE,
 } from '../actions';
 import { POKE_LIMIT, pokemons_url } from '../utils/constants';
 
@@ -70,9 +71,13 @@ export const ContextProvider = ({ children }) => {
     dispatch({ type: UPDATE_SORT, payload: sort });
   };
 
+  const updatePageSize = (value) => {
+    dispatch({ type: UPDATE_PAGE_SIZE, payload: value });
+  };
+
   return (
     <GlobalContext.Provider
-      value={{ ...state, nextPage, prevPage, updateSort }}
+      value={{ ...state, nextPage, prevPage, updateSort, updatePageSize }}
     >
       {children}
     </GlobalContext.Provider>

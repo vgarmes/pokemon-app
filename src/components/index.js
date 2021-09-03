@@ -4,4 +4,13 @@ import Loading from './Loading';
 import PokemonCard from './PokemonCard';
 import PageButtons from './PageButtons';
 import Sort from './Sort';
-export { Layout, Error, PokemonCard, PageButtons, Loading, Sort };
+import PageSizeSelector from './PageSizeSelector';
+export {
+  Layout,
+  Error,
+  PokemonCard,
+  PageButtons,
+  Loading,
+  Sort,
+  PageSizeSelector,
+};
