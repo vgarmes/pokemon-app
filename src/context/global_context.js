@@ -25,6 +25,8 @@ const initialState = {
   single_pokemon_error: false,
   pokemons: [],
   sort: 'name-a',
+  search_term: '',
+  search_category: 'pokemon',
 };
 
 const GlobalContext = React.createContext();
