@@ -6,12 +6,13 @@ import {
   PokemonCard,
   PageSizeSelector,
   PageButtons,
+  SearchBar,
 } from '../components';
 import { useGlobalContext } from '../context/global_context';
 
 const Home = () => {
   const { page_size, page_index } = useGlobalContext();
-  const { data, error } = useFetch('/pokemon', {
+  const { data, error, isValidating } = useFetch('/pokemon', {
     limit: page_size,
     offset: page_size * page_index,
   });
@@ -22,9 +23,10 @@ const Home = () => {
 
   return (
     <>
+      <SearchBar />
       <Box d="flex" alignItems="center" justifyContent="space-between">
         <PageSizeSelector />
-        <PageButtons />
+        <PageButtons isLoading={isValidating} isLastPage={data && !data.next} />
       </Box>
 
       <SimpleGrid my={[2, null, 6]} minChildWidth="300px" spacing="4">
@@ -34,7 +36,7 @@ const Home = () => {
           ))}
       </SimpleGrid>
       <Box d="flex" justifyContent="flex-end">
-        <PageButtons />
+        <PageButtons isLoading={false} isLastPage={data && !data.next} />
       </Box>
     </>
   );
