@@ -13,6 +13,8 @@ import {
   UPDATE_SORT,
   SORT_POKEMONS,
   UPDATE_PAGE_SIZE,
+  UPDATE_SEARCH_TERM,
+  UPDATE_SEARCH_CATEGORY,
 } from '../actions';
 import { POKE_LIMIT, pokemons_url } from '../utils/constants';
 
@@ -77,6 +79,14 @@ export const ContextProvider = ({ children }) => {
     dispatch({ type: UPDATE_PAGE_SIZE, payload: value });
   };
 
+  const updateSearchTerm = (value) => {
+    dispatch({ type: UPDATE_SEARCH_TERM, payload: value });
+  };
+
+  const updateSearchCategory = (value) => {
+    dispatch({ type: UPDATE_SEARCH_CATEGORY, payload: value });
+  };
+
   return (
     <GlobalContext.Provider
       value={{
@@ -85,6 +95,8 @@ export const ContextProvider = ({ children }) => {
         decreasePage,
         updateSort,
         updatePageSize,
+        updateSearchTerm,
+        updateSearchCategory,
       }}
     >
       {children}

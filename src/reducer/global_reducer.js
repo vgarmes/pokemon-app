@@ -10,6 +10,8 @@ import {
   UPDATE_SORT,
   SORT_POKEMONS,
   UPDATE_PAGE_SIZE,
+  UPDATE_SEARCH_TERM,
+  UPDATE_SEARCH_CATEGORY,
 } from '../actions';
 
 const global_reducer = (state, action) => {
@@ -87,6 +89,14 @@ const global_reducer = (state, action) => {
 
   if (action.type === UPDATE_PAGE_SIZE) {
     return { ...state, page_size: action.payload };
+  }
+
+  if (action.type === UPDATE_SEARCH_TERM) {
+    return { ...state, search_term: action.payload };
+  }
+
+  if (action.type === UPDATE_SEARCH_CATEGORY) {
+    return { ...state, search_category: action.payload };
   }
   throw new Error(`No matching "${action.type} - action type`);
 };
