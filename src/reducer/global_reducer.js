@@ -7,6 +7,7 @@ import {
   GET_SINGLE_POKEMON_BEGIN,
   GET_SINGLE_POKEMON_SUCCESS,
   GET_SINGLE_POKEMON_ERROR,
+  UPDATE_SORT,
   SORT_POKEMONS,
 } from '../actions';
 
@@ -60,15 +61,24 @@ const global_reducer = (state, action) => {
     };
   }
 
-  if (action.type === SORT_POKEMONS) {
-    const { sort, order } = action.payload;
-    let tempPokemons = [...state.pokemons];
+  if (action.type === UPDATE_SORT) {
+    return { ...state, sort: action.payload };
+  }
 
-    if (sort === 'id') {
-      if (order === 'asc') {
-        console.log('sorting');
-        tempPokemons.sort((a, b) => a.id - b.id);
-      }
+  if (action.type === SORT_POKEMONS) {
+    const { sort } = state;
+    let tempPokemons = [...state.pokemons];
+    console.log('sorting');
+
+    if (sort === 'name-a') {
+      tempPokemons.sort((a, b) => {
+        return a.name.localeCompare(b.name);
+      });
+    }
+    if (sort === 'name-z') {
+      tempPokemons.sort((a, b) => {
+        return b.name.localeCompare(a.name);
+      });
     }
 
     return { ...state, pokemons: tempPokemons };

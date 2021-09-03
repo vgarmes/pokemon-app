@@ -3,4 +3,5 @@ import Error from './Error';
 import Loading from './Loading';
 import PokemonCard from './PokemonCard';
 import PageButtons from './PageButtons';
-export { Layout, Error, PokemonCard, PageButtons, Loading };
+import Sort from './Sort';
+export { Layout, Error, PokemonCard, PageButtons, Loading, Sort };

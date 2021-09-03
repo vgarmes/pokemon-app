@@ -18,11 +18,11 @@ function getPokeUrl(path, options) {
   return `${pokeApiBase}${path}?${searchParams.toString()}`;
 }
 
-export function useFetchPokeData(path, options) {
+export function useFetch(path, options) {
   const endpointUrl = getPokeUrl(path, options);
   return useSWR(path ? endpointUrl : null, fetcher);
 }
 
-export function useFetch(url) {
+export function useFetchUrl(url) {
   return useSWR(url, fetcher);
 }

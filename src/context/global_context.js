@@ -10,6 +10,7 @@ import {
   GET_SINGLE_POKEMON_BEGIN,
   GET_SINGLE_POKEMON_SUCCESS,
   GET_SINGLE_POKEMON_ERROR,
+  UPDATE_SORT,
   SORT_POKEMONS,
 } from '../actions';
 import { POKE_LIMIT, pokemons_url } from '../utils/constants';
@@ -22,8 +23,7 @@ const initialState = {
   single_pokemon_loading: false,
   single_pokemon_error: false,
   pokemons: [],
-  sort: 'id',
-  order: 'asc',
+  sort: 'name-a',
 };
 
 const GlobalContext = React.createContext();
@@ -66,16 +66,14 @@ export const ContextProvider = ({ children }) => {
     dispatch({ type: PREV_PAGE });
   };
 
-  const sortPokemons = (sort, order) => {
-    dispatch({ type: SORT_POKEMONS, payload: { sort, order } });
+  const updateSort = (sort) => {
+    dispatch({ type: UPDATE_SORT, payload: sort });
   };
 
-  useEffect(() => {
-    fetchPokemons(pokemons_url, POKE_LIMIT);
-  }, []);
-
   return (
-    <GlobalContext.Provider value={{ ...state, nextPage, prevPage }}>
+    <GlobalContext.Provider
+      value={{ ...state, nextPage, prevPage, updateSort }}
+    >
       {children}
     </GlobalContext.Provider>
   );

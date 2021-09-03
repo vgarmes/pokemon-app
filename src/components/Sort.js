@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { FormControl, FormLabel, Select } from '@chakra-ui/react';
+import { useGlobalContext } from '../context/global_context';
 
 const Sort = () => {
-  const [sortValue, setSortValue] = useState();
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setSortValue(value);
-  };
+  const { sort, updateSort } = useGlobalContext();
+
   return (
     <form onSubmit={(e) => e.preventDefault}>
       <FormControl display="flex" alignItems="center">
@@ -26,13 +24,15 @@ const Sort = () => {
           name="sort"
           id="sort"
           fontSize="sm"
-          value={sortValue}
-          onChange={handleChange}
+          value={sort}
+          onChange={(e) => updateSort(e.target.value)}
         >
-          <option value="name-a" data-sort="" data-order="">
+          <option value="name-a" data-sort="name" data-order="desc">
             name (a-z)
           </option>
-          <option value="name-z">name (z-a)</option>
+          <option value="name-z" data-sort="name" data-order="asc">
+            name (z-a)
+          </option>
         </Select>
       </FormControl>
     </form>
