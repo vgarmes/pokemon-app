@@ -12,8 +12,9 @@ const PageSizeSelector = () => {
           htmlFor="page_size"
           flexShrink="0"
           p="0"
+          m="0"
           mr={2}
-          fontSize="sm"
+          fontSize="md"
           display={['none', 'block']}
         >
           Results per page
