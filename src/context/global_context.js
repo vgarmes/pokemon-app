@@ -8,6 +8,7 @@ import {
   UPDATE_PAGE_SIZE,
   UPDATE_SEARCH_TERM,
   UPDATE_SEARCH_CATEGORY,
+  RESET_USER_DATA,
 } from '../actions';
 
 const defaultState = {
@@ -62,6 +63,10 @@ export const ContextProvider = ({ children }) => {
     dispatch({ type: UPDATE_SEARCH_CATEGORY, payload: value });
   };
 
+  const resetUserData = () => {
+    dispatch({ type: RESET_USER_DATA, payload: defaultState });
+  };
+
   useEffect(() => {
     localStorage.setItem('user_data', JSON.stringify(state));
   }, [state]);
@@ -77,6 +82,7 @@ export const ContextProvider = ({ children }) => {
         updatePageSize,
         updateSearchTerm,
         updateSearchCategory,
+        resetUserData,
       }}
     >
       {children}

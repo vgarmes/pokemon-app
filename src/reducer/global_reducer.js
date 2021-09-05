@@ -6,6 +6,7 @@ import {
   UPDATE_PAGE_SIZE,
   UPDATE_SEARCH_TERM,
   UPDATE_SEARCH_CATEGORY,
+  RESET_USER_DATA,
 } from '../actions';
 
 const global_reducer = (state, action) => {
@@ -35,6 +36,10 @@ const global_reducer = (state, action) => {
 
   if (action.type === UPDATE_SEARCH_CATEGORY) {
     return { ...state, search_category: action.payload };
+  }
+
+  if (action.type === RESET_USER_DATA) {
+    return { ...state, ...action.payload };
   }
 
   throw new Error(`No matching "${action.type} - action type`);
