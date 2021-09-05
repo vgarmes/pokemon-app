@@ -3,7 +3,7 @@ import { useFetch, useFetchUrl } from '../hooks/useFetchPokemons';
 import { useGlobalContext } from '../context/global_context';
 import { searchFilter } from '../utils';
 import { PokemonCard, Error } from './';
-import { SimpleGrid } from '@chakra-ui/react';
+import { SimpleGrid, Box, Text } from '@chakra-ui/react';
 
 const SearchResults = () => {
   const { search_term, search_category } = useGlobalContext();
@@ -17,12 +17,18 @@ const SearchResults = () => {
   }
 
   if (results.length === 0) {
-    return <div>No results found</div>;
+    return (
+      <Box mt="25vh">
+        <Text textAlign="center" fontSize="3xl">
+          No results found
+        </Text>
+      </Box>
+    );
   }
 
   if (search_category === 'ability') {
     return (
-      <SimpleGrid my={[2, null, 6]} columns={[1, 2, 3]} spacing="4">
+      <SimpleGrid my={[2, null, 6]} minChildWidth="300px" spacing="4">
         {error && <Error />}
         {data &&
           results.map((result, index) => (
@@ -33,7 +39,7 @@ const SearchResults = () => {
   }
 
   return (
-    <SimpleGrid my={[2, null, 6]} columns={[1, 2, 3]} spacing="4">
+    <SimpleGrid my={[2, null, 6]} minChildWidth="300px" spacing="4">
       {error && <Error />}
       {data &&
         results.map((result, index) => <PokemonCard key={index} {...result} />)}
