@@ -1,6 +1,6 @@
 import React from 'react';
 import { useFetch } from '../hooks/useFetchPokemons';
-import { SimpleGrid, Box } from '@chakra-ui/react';
+import { SimpleGrid, Box, Spinner } from '@chakra-ui/react';
 import {
   Error,
   PokemonCard,
@@ -10,18 +10,16 @@ import {
 import { useGlobalContext } from '../context/global_context';
 
 const PokemonList = () => {
-  const { page_size, page_index, is_searching } = useGlobalContext();
+  const { page_size, page_index } = useGlobalContext();
   const { data, error, isValidating } = useFetch('/pokemon', {
     limit: page_size,
     offset: page_size * page_index,
   });
+
   if (error) {
     return <Error />;
   }
 
-  if (is_searching) {
-    return <></>;
-  }
   return (
     <>
       <Box d="flex" alignItems="center" justifyContent="space-between" mt={2}>
@@ -30,13 +28,29 @@ const PokemonList = () => {
       </Box>
 
       <SimpleGrid my={[2, null, 6]} minChildWidth="300px" spacing="4">
+        {isValidating && (
+          <Box
+            d="flex"
+            justifyContent="center"
+            alignItems="center"
+            height="100vh"
+          >
+            <Spinner
+              thickness="4px"
+              speed="0.65s"
+              emptyColor="gray.200"
+              color="blue.500"
+              size="xl"
+            />
+          </Box>
+        )}
         {data &&
           data.results.map((pokemon, index) => (
             <PokemonCard key={index} {...pokemon} />
           ))}
       </SimpleGrid>
-      <Box d="flex" justifyContent="flex-end">
-        <PageButtons isLoading={false} isLastPage={data && !data.next} />
+      <Box d="flex" justifyContent="flex-end" mb="5">
+        <PageButtons isLoading={isValidating} isLastPage={data && !data.next} />
       </Box>
     </>
   );
