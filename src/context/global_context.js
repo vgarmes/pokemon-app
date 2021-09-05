@@ -3,24 +3,27 @@ import reducer from '../reducer/global_reducer';
 import {
   NEXT_PAGE,
   PREV_PAGE,
+  RESTART_PAGE,
   UPDATE_SORT,
   UPDATE_PAGE_SIZE,
   UPDATE_SEARCH_TERM,
   UPDATE_SEARCH_CATEGORY,
 } from '../actions';
 
+const defaultState = {
+  page_size: 20,
+  page_index: 0,
+  sort: 'name-a',
+  search_term: '',
+  search_category: 'pokemon',
+};
+
 const getLocalStorage = () => {
   let userData = localStorage.getItem('user_data');
   if (userData) {
     return JSON.parse(localStorage.getItem('user_data'));
   } else {
-    return {
-      page_size: 20,
-      page_index: 0,
-      sort: 'name-a',
-      search_term: '',
-      search_category: 'pokemon',
-    };
+    return defaultState;
   }
 };
 
@@ -37,6 +40,10 @@ export const ContextProvider = ({ children }) => {
 
   const decreasePage = () => {
     dispatch({ type: PREV_PAGE });
+  };
+
+  const restartPage = () => {
+    dispatch({ type: RESTART_PAGE });
   };
 
   const updateSort = (sort) => {
@@ -65,6 +72,7 @@ export const ContextProvider = ({ children }) => {
         ...state,
         increasePage,
         decreasePage,
+        restartPage,
         updateSort,
         updatePageSize,
         updateSearchTerm,

@@ -1,6 +1,7 @@
 import {
   NEXT_PAGE,
   PREV_PAGE,
+  RESTART_PAGE,
   UPDATE_SORT,
   UPDATE_PAGE_SIZE,
   UPDATE_SEARCH_TERM,
@@ -14,6 +15,10 @@ const global_reducer = (state, action) => {
 
   if (action.type === PREV_PAGE) {
     return { ...state, page_index: state.page_index - 1 };
+  }
+
+  if (action.type === RESTART_PAGE) {
+    return { ...state, page_index: 0 };
   }
 
   if (action.type === UPDATE_SORT) {
