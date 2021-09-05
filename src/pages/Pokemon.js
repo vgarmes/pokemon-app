@@ -15,9 +15,11 @@ import {
   StatHelpText,
   Text,
   Tag,
+  Button,
 } from '@chakra-ui/react';
 import { pokeApiBase } from '../utils/constants';
 import { Error } from '../components';
+import { Link } from 'react-router-dom';
 
 const Pokemon = () => {
   let { pokemonId } = useParams();
@@ -50,6 +52,17 @@ const Pokemon = () => {
           />
         </Box>
       </SimpleGrid>
+      <Box d="flex" justifyContent="flex-end" mb="10">
+        <Button
+          as={Link}
+          to="/"
+          variant="solid"
+          colorScheme="blue"
+          width="80px"
+        >
+          Back
+        </Button>
+      </Box>
     </>
   );
 };
