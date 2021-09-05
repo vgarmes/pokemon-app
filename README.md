@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Pokemon app challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### [See the app in action](https://pokemon-app-challenge.netlify.app/)
 
-## Available Scripts
+## Requirements
+
+> You'll need [Node](https://nodejs.org/en/) and
+> [Yarn](https://classic.yarnpkg.com/en/) installed
+
+## Develop
 
 In the project directory, you can run:
 
-### `yarn start`
+- `yarn` to install dependencies
+- `yarn start` to start development environment
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Testing
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- `yarn test` to launch the test runner in the interactive watch mode
 
-### `yarn test`
+## Build
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In the project directory, run:
 
-### `yarn build`
+- `yarn` to install dependencies
+- `yarn build` to build app for production
+- output is in `build` directory,
+  [ready to be deployed](https://create-react-app.dev/docs/deployment/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Data
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+All data is fetched from the PokeAPI:
+[pokeapi.co](https://pokeapi.co/).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technologies
 
-### `yarn eject`
+> This project was bootstrapped with
+> [Create React App](https://github.com/facebook/create-react-app).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- [React](https://reactjs.org/) - UI library
+- [Chakra UI](https://chakra-ui.com/) - Design system and component library,
+  with [Emotion](https://emotion.sh), its peer dependency
+- [SWR](https://swr.now.sh/) - Data fetching and caching library
+- [React Router v6](https://github.com/ReactTraining/react-router/blob/f59ee5488bc343cf3c957b7e0cc395ef5eb572d2/docs/installation/getting-started.md) -
+  routing library
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Missing features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [User should be able to sort the search result by name, height and weight:] The PokeAPI does not accept query parameters such as `sort` and `order`, so a solution where all data is cached and filtered and sorted afterwards needs to be implemented.
