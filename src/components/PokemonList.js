@@ -24,7 +24,7 @@ const PokemonList = () => {
   }
   return (
     <>
-      <Box d="flex" alignItems="center" justifyContent="space-between">
+      <Box d="flex" alignItems="center" justifyContent="space-between" mt={2}>
         <PageSizeSelector />
         <PageButtons isLoading={isValidating} isLastPage={data && !data.next} />
       </Box>
