@@ -46,4 +46,4 @@ All data is fetched from the PokeAPI:
 
 ## Missing features
 
-- [User should be able to sort the search result by name, height and weight:] The PokeAPI does not accept query parameters such as `sort` and `order`, so a solution where all data is cached and filtered and sorted afterwards needs to be implemented.
+- **User should be able to sort the search result by name, height and weight:** The PokeAPI does not accept query parameters such as `sort` and `order`, so a solution where all data is cached and filtered and sorted afterwards needs to be implemented.
