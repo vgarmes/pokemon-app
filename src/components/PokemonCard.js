@@ -11,11 +11,16 @@ import {
   StatNumber,
 } from '@chakra-ui/react';
 import { useFetchUrl } from '../hooks/useFetchPokemons';
+import { Error } from './';
 
 const PokemonCard = ({ name, url }) => {
   const { data, error } = useFetchUrl(url);
 
   // pokemons with id > 10000 are just variants missing some information
+
+  if (error) {
+    return <Error />;
+  }
 
   return (
     <>
