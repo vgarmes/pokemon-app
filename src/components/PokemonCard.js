@@ -13,7 +13,6 @@ import {
 import { useFetchUrl } from '../hooks/useFetchPokemons';
 
 const PokemonCard = ({ name, url }) => {
-  const dummy_id = 1;
   const { data, error } = useFetchUrl(url);
 
   // pokemons with id > 10000 are just variants missing some information
@@ -23,7 +22,7 @@ const PokemonCard = ({ name, url }) => {
       {data && data.id < 10000 && (
         <Box
           as={Link}
-          to={`/pokemons/${dummy_id.toString()}`}
+          to={`/pokemons/${data.id.toString()}`}
           boxShadow="md"
           borderWidth="1px"
           rounded="lg"
