@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import { Home, Error } from './pages';
+import { Home, Pokemon, Error } from './pages';
 import { Layout } from './components';
 
 function App() {
@@ -9,6 +9,7 @@ function App() {
     <Layout>
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact="/:id" component={Pokemon} />
         <Route path="*" component={Error} />
       </Switch>
     </Layout>
