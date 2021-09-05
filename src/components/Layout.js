@@ -6,7 +6,9 @@ const Layout = ({ children }) => {
   return (
     <div>
       <Navbar />
-      <Box mx={[2, null, 6]}>{children}</Box>
+      <Box px={[2, null, 6]} maxWidth="1920px" mx="auto">
+        {children}
+      </Box>
     </div>
   );
 };
