@@ -8,9 +8,15 @@ function App() {
   return (
     <Layout>
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact="/:id" component={Pokemon} />
-        <Route path="*" component={Error} />
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/pokemons/:pokemonId">
+          <Pokemon />
+        </Route>
+        <Route path="*">
+          <Error />
+        </Route>
       </Switch>
     </Layout>
   );
