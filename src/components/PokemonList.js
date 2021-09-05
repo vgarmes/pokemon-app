@@ -6,18 +6,21 @@ import {
   PokemonCard,
   PageSizeSelector,
   PageButtons,
-  SearchBar,
 } from '../components';
 import { useGlobalContext } from '../context/global_context';
 
 const PokemonList = () => {
-  const { page_size, page_index } = useGlobalContext();
+  const { page_size, page_index, is_searching } = useGlobalContext();
   const { data, error, isValidating } = useFetch('/pokemon', {
     limit: page_size,
     offset: page_size * page_index,
   });
   if (error) {
     return <Error />;
+  }
+
+  if (is_searching) {
+    return <></>;
   }
   return (
     <>
@@ -28,8 +31,8 @@ const PokemonList = () => {
 
       <SimpleGrid my={[2, null, 6]} minChildWidth="300px" spacing="4">
         {data &&
-          data.results.map((pokemon) => (
-            <PokemonCard key={pokemon.id} {...pokemon} />
+          data.results.map((pokemon, index) => (
+            <PokemonCard key={index} {...pokemon} />
           ))}
       </SimpleGrid>
       <Box d="flex" justifyContent="flex-end">
