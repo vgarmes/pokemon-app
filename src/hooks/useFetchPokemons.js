@@ -1,4 +1,5 @@
 import useSWR from 'swr';
+import { pokeApiBase } from '../utils/constants';
 
 const fetcher = async (...args) => {
   const response = await fetch(...args);
@@ -14,7 +15,6 @@ function getPokeUrl(path, options) {
     searchParams.append(property, options[property]);
   }
 
-  const pokeApiBase = 'https://pokeapi.co/api/v2';
   return `${pokeApiBase}${path}?${searchParams.toString()}`;
 }
 
