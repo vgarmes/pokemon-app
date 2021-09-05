@@ -1,5 +1,6 @@
 import React from 'react';
 import { Flex, Text } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -13,6 +14,8 @@ const Navbar = () => {
       color="white"
     >
       <Text
+        as={Link}
+        to="/"
         fontFamily="mono"
         letterSpacing="2px"
         fontWeight="bold"
