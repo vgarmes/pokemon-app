@@ -1,5 +1,4 @@
-import React, { useReducer, useContext, useEffect } from 'react';
-import axios from 'axios';
+import React, { useReducer, useContext } from 'react';
 import reducer from '../reducer/global_reducer';
 import {
   NEXT_PAGE,
