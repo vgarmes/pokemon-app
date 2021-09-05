@@ -27,7 +27,6 @@ const SearchResults = () => {
 
 const CategoryWrapper = ({ url }) => {
   const { data, error } = useFetchUrl(url);
-  console.log(data);
   return (
     <>
       {data &&
