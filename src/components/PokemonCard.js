@@ -16,9 +16,11 @@ const PokemonCard = ({ name, url }) => {
   const dummy_id = 1;
   const { data, error } = useFetchUrl(url);
 
+  // pokemons with id > 10000 are just variants missing some information
+
   return (
     <>
-      {data && (
+      {data && data.id < 10000 && (
         <Box
           as={Link}
           to={`/pokemons/${dummy_id.toString()}`}
