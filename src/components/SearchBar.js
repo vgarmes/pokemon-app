@@ -10,7 +10,7 @@ const SearchBar = () => {
     updateSearchCategory,
   } = useGlobalContext();
   return (
-    <Box d="flex" justifyContent="center" alignItems="center">
+    <Box d="flex" justifyContent="center" alignItems="center" mt={5}>
       <Input
         placeholder="Search..."
         value={search_term}
